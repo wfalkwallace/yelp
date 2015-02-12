@@ -11,21 +11,27 @@ import UIKit
 class ViewController: UIViewController {
     var client: YelpClient!
     
-    // You can register for Yelp API keys here: http://www.yelp.com/developers/manage_api_keys
-    let yelpConsumerKey = "vxKwwcR_NMQ7WaEiQBK_CA"
-    let yelpConsumerSecret = "33QCvh5bIF5jIHR5klQr7RtBDhQ"
-    let yelpToken = "uRcRswHFYa1VkDrGV6LAW2F8clGh5JHV"
-    let yelpTokenSecret = "mqtKIxMIR4iBtBPZCmCLEb-Dz3Y"
+    var consumerKey: String?
+    var consumerSecret: String?
+    var token: String?
+    var tokenSecret: String?
     
     required init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
+        
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
-        client = YelpClient(consumerKey: yelpConsumerKey, consumerSecret: yelpConsumerSecret, accessToken: yelpToken, accessSecret: yelpTokenSecret)
+
+        var defaults = NSUserDefaults.standardUserDefaults()
+        consumerKey = defaults.stringForKey("ConsumerKey")
+        consumerSecret = defaults.stringForKey("ConsumerSecret")
+        token = defaults.stringForKey("Token")
+        tokenSecret = defaults.stringForKey("TokenSecret")
         
+        client = YelpClient(consumerKey: consumerKey!, consumerSecret: consumerSecret!, accessToken: token!, accessSecret: tokenSecret!)
+
         client.searchWithTerm("Thai", success: { (operation: AFHTTPRequestOperation!, response: AnyObject!) -> Void in
             println(response)
         }) { (operation: AFHTTPRequestOperation!, error: NSError!) -> Void in
