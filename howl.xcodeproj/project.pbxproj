@@ -14,6 +14,7 @@
 		E6D19A541A8C34C000E8077F /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E6D19A531A8C34C000E8077F /* Images.xcassets */; };
 		E6D19A571A8C34C000E8077F /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = E6D19A551A8C34C000E8077F /* LaunchScreen.xib */; };
 		E6D19A631A8C34C000E8077F /* howlTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6D19A621A8C34C000E8077F /* howlTests.swift */; };
+		E6D19A701A8C3BCC00E8077F /* YelpClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6D19A6F1A8C3BCC00E8077F /* YelpClient.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,6 +41,7 @@
 		E6D19A611A8C34C000E8077F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E6D19A621A8C34C000E8077F /* howlTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = howlTests.swift; sourceTree = "<group>"; };
 		E6D19A6C1A8C357F00E8077F /* howl-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "howl-Bridging-Header.h"; sourceTree = "<group>"; };
+		E6D19A6F1A8C3BCC00E8077F /* YelpClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YelpClient.swift; sourceTree = "<group>"; };
 		F71529F39697B5DC307700AF /* Pods-howl.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-howl.release.xcconfig"; path = "Pods/Target Support Files/Pods-howl/Pods-howl.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -106,6 +108,7 @@
 				E6D19A4E1A8C34C000E8077F /* ViewController.swift */,
 				E6D19A501A8C34C000E8077F /* Main.storyboard */,
 				E6D19A531A8C34C000E8077F /* Images.xcassets */,
+				E6D19A6F1A8C3BCC00E8077F /* YelpClient.swift */,
 				E6D19A551A8C34C000E8077F /* LaunchScreen.xib */,
 				E6D19A4A1A8C34C000E8077F /* Supporting Files */,
 				E6D19A6C1A8C357F00E8077F /* howl-Bridging-Header.h */,
@@ -290,6 +293,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E6D19A4F1A8C34C000E8077F /* ViewController.swift in Sources */,
+				E6D19A701A8C3BCC00E8077F /* YelpClient.swift in Sources */,
 				E6D19A4D1A8C34C000E8077F /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

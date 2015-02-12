@@ -10,9 +10,28 @@ import UIKit
 
 class ViewController: UIViewController {
 
+    var client: YelpClient!
+    
+    let consumerKey = NSBundle.mainBundle().objectForInfoDictionaryKey("CONSUMER_KEY") as NSString
+    let consumerSecret = NSBundle.mainBundle().objectForInfoDictionaryKey("CONSUMER_SECRET") as NSString
+    let accessToken = NSBundle.mainBundle().objectForInfoDictionaryKey("TOKEN") as NSString
+    let accessSecret = NSBundle.mainBundle().objectForInfoDictionaryKey("TOKEN_SECRET") as NSString
+    
+    required init(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        
+        client = YelpClient(consumerKey: yelpConsumerKey, consumerSecret: yelpConsumerSecret, accessToken: yelpToken, accessSecret: yelpTokenSecret)
+        
+        client.searchWithTerm("Thai", success: { (operation: AFHTTPRequestOperation!, response: AnyObject!) -> Void in
+            println(response)
+            }) { (operation: AFHTTPRequestOperation!, error: NSError!) -> Void in
+                println(error)
+        }
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -22,4 +41,3 @@ class ViewController: UIViewController {
 
 
 }
-
