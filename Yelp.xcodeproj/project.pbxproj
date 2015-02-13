@@ -16,6 +16,7 @@
 		222D8A7D19CCFAE000D2DB53 /* YelpClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222D8A7C19CCFAE000D2DB53 /* YelpClient.swift */; };
 		7737DB8459C5BA1D633E5269 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F449317F2C7FDFEC0C7CD06F /* libPods.a */; };
 		E61005111A8D6B5F00AFAA30 /* config.plist in Resources */ = {isa = PBXBuildFile; fileRef = E610050F1A8D52DF00AFAA30 /* config.plist */; };
+		E61005151A8D87D100AFAA30 /* ResultTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E61005141A8D87D100AFAA30 /* ResultTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +45,7 @@
 		5CB120C5DEDD3A5CB42E9A5E /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		6F90A1249E7D47FDCA376589 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		E610050F1A8D52DF00AFAA30 /* config.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = config.plist; sourceTree = "<group>"; };
+		E61005141A8D87D100AFAA30 /* ResultTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultTableViewCell.swift; sourceTree = "<group>"; };
 		F449317F2C7FDFEC0C7CD06F /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -138,6 +140,7 @@
 		222D8A7B19CCFAB600D2DB53 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				E61005141A8D87D100AFAA30 /* ResultTableViewCell.swift */,
 				222D8A5C19CCF9F900D2DB53 /* ViewController.swift */,
 			);
 			name = "View Controllers";
@@ -298,6 +301,7 @@
 			files = (
 				222D8A5D19CCF9F900D2DB53 /* ViewController.swift in Sources */,
 				222D8A7D19CCFAE000D2DB53 /* YelpClient.swift in Sources */,
+				E61005151A8D87D100AFAA30 /* ResultTableViewCell.swift in Sources */,
 				222D8A5B19CCF9F900D2DB53 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
