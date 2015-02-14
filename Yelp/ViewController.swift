@@ -8,15 +8,15 @@
 
 import UIKit
 
-class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
-    var client: YelpClient!
-    var results: [Result]!
-    var searchBar: UISearchBar!
+class ViewController: UIViewController,
+                      UITableViewDataSource,
+                      UITableViewDelegate,
+                      UISearchBarDelegate {
     
-    var consumerKey: String!
-    var consumerSecret: String!
-    var token: String!
-    var tokenSecret: String!
+    var client: YelpClient!
+    var results: [Result] = []
+    var filteredResults: [Result] = []
+    var searchBar: UISearchBar = UISearchBar()
     
     @IBOutlet weak var resultsTableView: UITableView!
     
@@ -25,73 +25,75 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         
     }
     
-    override func viewWillAppear(animated: Bool) {
-        super.viewWillAppear(animated)
-
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         var defaults = NSUserDefaults.standardUserDefaults()
-        consumerKey = defaults.stringForKey("ConsumerKey")
-        consumerSecret = defaults.stringForKey("ConsumerSecret")
-        token = defaults.stringForKey("Token")
-        tokenSecret = defaults.stringForKey("TokenSecret")
+        let consumerKey = defaults.stringForKey("ConsumerKey")
+        let consumerSecret = defaults.stringForKey("ConsumerSecret")
+        let token = defaults.stringForKey("Token")
+        let tokenSecret = defaults.stringForKey("TokenSecret")
         
-        loadResults()
-        
+        client = YelpClient(consumerKey: consumerKey, consumerSecret: consumerSecret, accessToken: token, accessSecret: tokenSecret)
+
+        searchBar.delegate = self
+        navigationItem.titleView = searchBar
         resultsTableView.estimatedRowHeight = 150
         resultsTableView.rowHeight = UITableViewAutomaticDimension
         
+        loadResults()
     }
     
     func loadResults() {
-        client = YelpClient(consumerKey: consumerKey, consumerSecret: consumerSecret, accessToken: token, accessSecret: tokenSecret)
         
         client.searchWithTerm("Thai", success: { (operation: AFHTTPRequestOperation!, response: AnyObject!) -> Void in
-            
+        
             for result in ((response as NSDictionary)["businesses"] as NSArray) {
                 let resultName = result["name"] as String
                 let resultImageURL = result["image_url"]! as String
                 let resultDistance = result["distance"] as Float
-                let resultFormattedDistance = NSString(format: "%.2f", resultDistance / 1609.34)
                 let resultRatingURL = result["rating_img_url"]! as String
                 let resultReviewerCount = result["review_count"]! as Int
-                let resultPrice = "$?"
                 let resultAddress = ((result["location"] as NSDictionary)["address"] as NSArray)[0] as String
-                let resultCategoriesRaw = result["categories"]! as [[String]]
-                let resultCategories = ",".join(resultCategoriesRaw.map({
+                let resultCategories = ",".join((result["categories"]! as [[String]]).map({
                     $0[0] as String
                 }))
                 
-                self.results.append(Result(resultName: resultName, resultImageURL: resultImageURL, resultDistance: resultDistance, resultRatingURL: resultRatingURL, resultReviewerCount: resultReviewerCount, resultAddress: resultAddress, resultCategories: resultCategories))
+                self.results.append(Result(resultName: resultName,
+                                           resultImageURL: resultImageURL,
+                                           resultDistance: resultDistance,
+                                           resultRatingURL: resultRatingURL,
+                                           resultReviewerCount: resultReviewerCount,
+                                           resultAddress: resultAddress,
+                                           resultCategories: resultCategories))
             }
+            
+            self.filteredResults = self.results
             self.resultsTableView.reloadData()
-            }, failure: { (operation: AFHTTPRequestOperation!, error: NSError!) -> Void in
-                println(error)
+        }, failure: { (operation: AFHTTPRequestOperation!, error: NSError!) -> Void in
+            println(error)
         })
 
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if let results = results {
-            return results.count
-        } else {
-            return 0
-        }
+        return filteredResults.count
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = resultsTableView.dequeueReusableCellWithIdentifier("com.falk-wallace.ResultCell") as ResultTableViewCell
-        cell.result = self.results[indexPath.row]
         cell.resultNumber = indexPath.row + 1
+        cell.result = self.filteredResults[indexPath.row]
         return cell
     }
     
-    
-    
-    
+    func searchBar(searchBar: UISearchBar, textDidChange search: String) {
+        filteredResults = search.isEmpty ? results : results.filter({(data: Result) -> Bool in
+            return data.resultName.rangeOfString(search, options: .CaseInsensitiveSearch) != nil
+        })
+        
+        resultsTableView.reloadData()
+    }
     
     
     override func didReceiveMemoryWarning() {

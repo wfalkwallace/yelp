@@ -10,19 +10,16 @@ import Foundation
 
 class Result {
     
-    var resultName: String!
-    var resultImageURL: String!
-    var resultDistance: Float!
-    var resultRatingURL: String!
-    var resultReviewerCount: Int!
-    var resultAddress: String!
-    var resultCategories: String!
+    let resultName: String
+    let resultImageURL: String
+    let resultDistance: Float
+    let resultRatingURL: String
+    let resultReviewerCount: Int
+    let resultAddress: String
+    let resultCategories: String
     var resultFormattedDistance: String {
-        get {
-            return NSString(format: "%.2f", resultDistance / 1609.34)
-        }
+        return NSString(format: "%.2f", resultDistance / 1609.34)
     }
-    
     
     init(resultName: String,
         resultImageURL: String,

@@ -18,6 +18,8 @@
 		E61005111A8D6B5F00AFAA30 /* config.plist in Resources */ = {isa = PBXBuildFile; fileRef = E610050F1A8D52DF00AFAA30 /* config.plist */; };
 		E61005151A8D87D100AFAA30 /* ResultTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E61005141A8D87D100AFAA30 /* ResultTableViewCell.swift */; };
 		E62100AB1A8EFC8200F41710 /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = E62100AA1A8EFC8200F41710 /* Result.swift */; };
+		E62100AD1A8FD23A00F41710 /* FiltersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E62100AC1A8FD23A00F41710 /* FiltersViewController.swift */; };
+		E62100AF1A8FD5C800F41710 /* FilterTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E62100AE1A8FD5C800F41710 /* FilterTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,6 +50,8 @@
 		E610050F1A8D52DF00AFAA30 /* config.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = config.plist; sourceTree = "<group>"; };
 		E61005141A8D87D100AFAA30 /* ResultTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultTableViewCell.swift; sourceTree = "<group>"; };
 		E62100AA1A8EFC8200F41710 /* Result.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
+		E62100AC1A8FD23A00F41710 /* FiltersViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FiltersViewController.swift; sourceTree = "<group>"; };
+		E62100AE1A8FD5C800F41710 /* FilterTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterTableViewCell.swift; sourceTree = "<group>"; };
 		F449317F2C7FDFEC0C7CD06F /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -143,8 +147,10 @@
 		222D8A7B19CCFAB600D2DB53 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				E62100AE1A8FD5C800F41710 /* FilterTableViewCell.swift */,
 				E61005141A8D87D100AFAA30 /* ResultTableViewCell.swift */,
 				222D8A5C19CCF9F900D2DB53 /* ViewController.swift */,
+				E62100AC1A8FD23A00F41710 /* FiltersViewController.swift */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -314,6 +320,8 @@
 				222D8A7D19CCFAE000D2DB53 /* YelpClient.swift in Sources */,
 				E61005151A8D87D100AFAA30 /* ResultTableViewCell.swift in Sources */,
 				E62100AB1A8EFC8200F41710 /* Result.swift in Sources */,
+				E62100AD1A8FD23A00F41710 /* FiltersViewController.swift in Sources */,
+				E62100AF1A8FD5C800F41710 /* FilterTableViewCell.swift in Sources */,
 				222D8A5B19CCF9F900D2DB53 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

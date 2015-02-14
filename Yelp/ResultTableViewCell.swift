@@ -9,9 +9,6 @@
 import UIKit
 
 class ResultTableViewCell: UITableViewCell {
-
-    var result: Result!
-    var resultNumber: Int!
     
     @IBOutlet weak var resultTitleLabel: UILabel!
     @IBOutlet weak var resultImageView: UIImageView!
@@ -21,19 +18,28 @@ class ResultTableViewCell: UITableViewCell {
     @IBOutlet weak var resultAddressLabel: UILabel!
     @IBOutlet weak var resultCategoriesLabel: UILabel!
     
+    var resultNumber: Int!
+    var result: Result! {
+        didSet {
+            // set all the props
+            resultTitleLabel.text = "\(resultNumber). \(result.resultName)"
+            resultImageView.setImageWithURL(NSURL(string: result.resultImageURL))
+            resultDistanceLabel.text = "\(result.resultFormattedDistance) mi"
+            resultRatingImageView.setImageWithURL(NSURL(string: result.resultRatingURL))
+            resultReviewerCountLabel.text = result.resultReviewerCount == 1
+                                            ? "\(result.resultReviewerCount) Review"
+                                            : "\(result.resultReviewerCount) Reviews"
+            resultAddressLabel.text = result.resultAddress
+            resultCategoriesLabel.text = result.resultCategories
+        }
+    }
+    
     override func awakeFromNib() {
         super.awakeFromNib()
     
+        // hack to clean up dequeueing 
         resultImageView.image = nil
-        
-        // set all the props
-        resultTitleLabel.text = "\(resultNumber). \(result.resultName)"
-        resultImageView.setImageWithURL(NSURL(string: result.resultImageURL))
-        resultDistanceLabel.text = "\(result.resultFormattedDistance) mi"
-        resultRatingImageView.setImageWithURL(NSURL(string: result.resultRatingURL))
-        resultReviewerCountLabel.text = "\(result.resultReviewerCount) Reviews"
-        resultAddressLabel.text = result.resultAddress
-        resultCategoriesLabel.text = result.resultCategories
+        resultNumber = nil
         
         // style some stuff
         resultImageView.layer.cornerRadius = 10;
