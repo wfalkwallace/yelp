@@ -20,7 +20,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="com.falk-wallace.ResultCell" rowHeight="143" id="97N-rJ-pF3" customClass="ResultTableViewCell" customModule="Yelp" customModuleProvider="target">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="com.falk-wallace.ResultCell" rowHeight="150" id="97N-rJ-pF3" customClass="ResultTableViewCell" customModule="Yelp" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="97N-rJ-pF3" id="P4z-uy-Z0W">
@@ -273,45 +273,6 @@
                                 <segue destination="DhB-Bk-nVH" kind="presentation" id="sEa-7Z-Seb"/>
                             </connections>
                         </barButtonItem>
-                        <view key="titleView" contentMode="scaleToFill" id="vd9-KG-ZT4">
-                            <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <subviews>
-                                <searchBar contentMode="redraw" searchBarStyle="minimal" translatesAutoresizingMaskIntoConstraints="NO" id="pfh-AR-oqv">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                                    <textInputTraits key="textInputTraits" returnKeyType="search"/>
-                                </searchBar>
-                            </subviews>
-                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            <constraints>
-                                <constraint firstAttribute="bottom" secondItem="pfh-AR-oqv" secondAttribute="bottom" id="AAm-RZ-KWu"/>
-                                <constraint firstAttribute="trailing" secondItem="pfh-AR-oqv" secondAttribute="trailing" id="B55-gi-x9M"/>
-                                <constraint firstItem="pfh-AR-oqv" firstAttribute="top" secondItem="vd9-KG-ZT4" secondAttribute="top" id="eMU-la-8S1"/>
-                                <constraint firstItem="pfh-AR-oqv" firstAttribute="leading" secondItem="vd9-KG-ZT4" secondAttribute="leading" id="fRP-v3-ZLH"/>
-                            </constraints>
-                            <variation key="default">
-                                <mask key="subviews">
-                                    <exclude reference="pfh-AR-oqv"/>
-                                </mask>
-                                <mask key="constraints">
-                                    <exclude reference="AAm-RZ-KWu"/>
-                                    <exclude reference="B55-gi-x9M"/>
-                                    <exclude reference="eMU-la-8S1"/>
-                                    <exclude reference="fRP-v3-ZLH"/>
-                                </mask>
-                            </variation>
-                            <variation key="widthClass=compact">
-                                <mask key="subviews">
-                                    <include reference="pfh-AR-oqv"/>
-                                </mask>
-                                <mask key="constraints">
-                                    <include reference="AAm-RZ-KWu"/>
-                                    <include reference="B55-gi-x9M"/>
-                                    <include reference="eMU-la-8S1"/>
-                                    <include reference="fRP-v3-ZLH"/>
-                                </mask>
-                            </variation>
-                        </view>
                     </navigationItem>
                     <connections>
                         <outlet property="resultsTableView" destination="Rtz-0A-4eq" id="RVq-xZ-i9s"/>
@@ -379,4 +340,5 @@
             <point key="canvasLocation" x="2038.5" y="278"/>
         </scene>
     </scenes>
+    <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
 </document>

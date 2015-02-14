@@ -57,6 +57,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = resultsTableView.dequeueReusableCellWithIdentifier("com.falk-wallace.ResultCell") as ResultTableViewCell
+        cell.resultImageView.image = nil
         
         //parse out all the data (wish SwiftyJSON and BDBOAuth didn't blow up together)
         let result = (results!["businesses"] as NSArray)[indexPath.row] as NSDictionary
