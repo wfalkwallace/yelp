@@ -77,18 +77,12 @@
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
-                                                    <variation key="widthClass=compact" misplaced="YES">
-                                                        <rect key="frame" x="101" y="8" width="241" height="20.5"/>
-                                                    </variation>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" text="1 mi" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e3H-PT-enx">
                                                     <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
-                                                    <variation key="widthClass=compact" misplaced="YES">
-                                                        <rect key="frame" x="350" y="8" width="42" height="20.5"/>
-                                                    </variation>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="752" text="111 Address Place" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VUW-e8-VRU">
                                                     <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
@@ -107,9 +101,6 @@
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
-                                                    <variation key="widthClass=compact" misplaced="YES">
-                                                        <rect key="frame" x="193" y="34" width="93.5" height="20.5"/>
-                                                    </variation>
                                                 </label>
                                             </subviews>
                                             <constraints>
@@ -297,21 +288,27 @@
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
-                                                    <variation key="widthClass=compact" fixedFrame="YES">
-                                                        <rect key="frame" x="8" y="14" width="42" height="21"/>
-                                                    </variation>
                                                 </label>
                                                 <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1UZ-sC-je7">
                                                     <rect key="frame" x="-25" y="-15" width="51" height="31"/>
-                                                    <variation key="widthClass=compact" fixedFrame="YES">
-                                                        <rect key="frame" x="343" y="9" width="51" height="31"/>
-                                                    </variation>
                                                 </switch>
                                             </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="trailing" secondItem="1UZ-sC-je7" secondAttribute="trailing" constant="8" id="BGB-am-2wc"/>
+                                                <constraint firstItem="vdQ-ib-Xqn" firstAttribute="leading" secondItem="clF-qz-7pE" secondAttribute="leading" constant="8" id="RZv-5j-tDX"/>
+                                                <constraint firstAttribute="centerY" secondItem="vdQ-ib-Xqn" secondAttribute="centerY" id="hnG-Ua-9wE"/>
+                                                <constraint firstAttribute="centerY" secondItem="1UZ-sC-je7" secondAttribute="centerY" id="rcV-L0-Bpt"/>
+                                            </constraints>
                                             <variation key="default">
                                                 <mask key="subviews">
                                                     <exclude reference="vdQ-ib-Xqn"/>
                                                     <exclude reference="1UZ-sC-je7"/>
+                                                </mask>
+                                                <mask key="constraints">
+                                                    <exclude reference="RZv-5j-tDX"/>
+                                                    <exclude reference="hnG-Ua-9wE"/>
+                                                    <exclude reference="BGB-am-2wc"/>
+                                                    <exclude reference="rcV-L0-Bpt"/>
                                                 </mask>
                                             </variation>
                                             <variation key="widthClass=compact">
@@ -319,10 +316,20 @@
                                                     <include reference="vdQ-ib-Xqn"/>
                                                     <include reference="1UZ-sC-je7"/>
                                                 </mask>
+                                                <mask key="constraints">
+                                                    <include reference="RZv-5j-tDX"/>
+                                                    <include reference="hnG-Ua-9wE"/>
+                                                    <include reference="BGB-am-2wc"/>
+                                                    <include reference="rcV-L0-Bpt"/>
+                                                </mask>
                                             </variation>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="mPP-vi-R02" id="B9q-B3-Jpy"/>
+                                    <outlet property="delegate" destination="mPP-vi-R02" id="xHZ-t4-0cM"/>
+                                </connections>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -356,9 +363,20 @@
                         </variation>
                     </view>
                     <navigationItem key="navigationItem" title="Filters" id="v6w-s3-Pcc">
-                        <barButtonItem key="leftBarButtonItem" title="Cancel" id="dWM-6j-tDH"/>
-                        <barButtonItem key="rightBarButtonItem" title="Search" id="Y6v-P1-YNJ"/>
+                        <barButtonItem key="leftBarButtonItem" title="Cancel" id="dWM-6j-tDH">
+                            <connections>
+                                <action selector="onCancelButton:" destination="mPP-vi-R02" id="2Yk-KU-bg7"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Search" id="Y6v-P1-YNJ">
+                            <connections>
+                                <action selector="onApplyButton:" destination="mPP-vi-R02" id="9tf-gm-Rxy"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="filtersTableView" destination="lgH-AH-k0b" id="FpP-Yf-EFv"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1VP-qo-nFO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

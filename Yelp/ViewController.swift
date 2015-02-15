@@ -11,7 +11,8 @@ import UIKit
 class ViewController: UIViewController,
                       UITableViewDataSource,
                       UITableViewDelegate,
-                      UISearchBarDelegate {
+                      UISearchBarDelegate,
+                      FiltersViewControllerDelegate {
     
     var client: YelpClient!
     var results: [Result] = []
@@ -41,12 +42,12 @@ class ViewController: UIViewController,
         resultsTableView.estimatedRowHeight = 150
         resultsTableView.rowHeight = UITableViewAutomaticDimension
         
-        loadResults()
+        loadResults(nil, categories: nil)
     }
     
-    func loadResults() {
+    func loadResults(term: String?, categories: String?) {
         
-        client.searchWithTerm("Thai", success: { (operation: AFHTTPRequestOperation!, response: AnyObject!) -> Void in
+        client.search(["term": term, "categories": categories], success: { (operation: AFHTTPRequestOperation!, response: AnyObject!) -> Void in
         
             for result in ((response as NSDictionary)["businesses"] as NSArray) {
                 let resultName = result["name"] as String
@@ -87,6 +88,10 @@ class ViewController: UIViewController,
         return cell
     }
     
+    func tableView(tableView: UITableView, estimatedHeightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        return UITableViewAutomaticDimension
+    }
+    
     func searchBar(searchBar: UISearchBar, textDidChange search: String) {
         filteredResults = search.isEmpty ? results : results.filter({(data: Result) -> Bool in
             return data.resultName.rangeOfString(search, options: .CaseInsensitiveSearch) != nil
@@ -95,6 +100,13 @@ class ViewController: UIViewController,
         resultsTableView.reloadData()
     }
     
+    func searchBarSearchButtonClicked(searchBar: UISearchBar) {
+        loadResults(searchBar.text, categories: nil)
+    }
+    
+    func filtersViewController(filtersViewController: FiltersViewController, filterValues: [String]) {
+        loadResults(nil, categories: ",".join(filterValues))
+    }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
