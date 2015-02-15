@@ -30,7 +30,7 @@ class ResultTableViewCell: UITableViewCell {
                                             ? "\(result.resultReviewerCount) Review"
                                             : "\(result.resultReviewerCount) Reviews"
             resultAddressLabel.text = result.resultAddress
-            resultCategoriesLabel.text = result.resultCategories
+            resultCategoriesLabel.text = ", ".join(result.resultCategories)
         }
     }
     

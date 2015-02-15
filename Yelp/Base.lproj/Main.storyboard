@@ -216,6 +216,7 @@
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <gestureRecognizers/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="Rtz-0A-4eq" secondAttribute="trailing" id="7zP-6X-nu2"/>
                             <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="Rtz-0A-4eq" secondAttribute="bottom" id="LyV-w4-kPY"/>
@@ -380,7 +381,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1VP-qo-nFO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2956.5" y="278"/>
+            <point key="canvasLocation" x="2911.5" y="278"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Ota-bX-nWX">
