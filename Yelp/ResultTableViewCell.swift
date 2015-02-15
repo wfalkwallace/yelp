@@ -44,6 +44,9 @@ class ResultTableViewCell: UITableViewCell {
         // style some stuff
         resultImageView.layer.cornerRadius = 10;
         resultImageView.clipsToBounds = true;
+        resultImageView.layer.borderColor = UIColor.grayColor().CGColor
+        resultImageView.layer.borderWidth = 1.0;
+        resultImageView.layer.masksToBounds = true;
         
     
     }
