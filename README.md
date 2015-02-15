@@ -16,7 +16,7 @@ Time spent: [`<Number of hours spent>`](https://wakatime.com/@wfalkwallace/proje
    - [ ] The filters you should actually have are: category, sort (best match, distance, highest rated), radius (meters), deals (on/off).
    - [ ] The filters table should be organized into sections as in the mock.
    - [x] Clicking on the "Search" button should dismiss the filters page and trigger the search w/ the new filter settings.
-   - [ ] Display some of the available Yelp categories (choose any 3-4 that you want).
+   - [x] Display some of the available Yelp categories (choose any 3-4 that you want).
 
 #### Optional
 
