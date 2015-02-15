@@ -15,11 +15,14 @@ protocol FiltersViewControllerDelegate: class {
 
 class FiltersViewController: UIViewController,
                              UITableViewDataSource,
-                             UITableViewDelegate {
+                             UITableViewDelegate,
+                             FilterTableViewCellDelegate {
 
     @IBOutlet weak var filtersTableView: UITableView!
-    weak var delegate: FiltersViewControllerDelegate?
     
+    weak var delegate: FiltersViewControllerDelegate?
+    var filters: [String] = []
+    let 
     let categories: [[String:String]] = [
         ["name" : "Afghan", "code": "afghani"],
         ["name" : "African", "code": "african"],
@@ -189,7 +192,7 @@ class FiltersViewController: UIViewController,
         ["name" : "Vietnamese", "code": "vietnamese"],
         ["name" : "Wok", "code": "wok"],
         ["name" : "Wraps", "code": "wraps"],
-        ["name" : "Yugoslav", "code": "yugoslav"]];
+        ["name" : "Yugoslav", "code": "yugoslav"]]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -202,7 +205,7 @@ class FiltersViewController: UIViewController,
     }
     
     @IBAction func onApplyButton(sender: AnyObject) {
-        delegate?.filtersViewController(self, filterValues: ["thai"])
+        delegate?.filtersViewController(self, filterValues: filters)
         self.dismissViewControllerAnimated(true, completion: nil)
     }
     
@@ -212,7 +215,20 @@ class FiltersViewController: UIViewController,
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = filtersTableView.dequeueReusableCellWithIdentifier("com.falk-wallace.FilterCell") as FilterTableViewCell
+        let filter = categories[indexPath.row]
+        cell.filter = filter
+        cell.filterSwitch.on = find(filters, filter["code"]!) != nil
+        cell.delegate = self
         return cell
+    }
+    
+    func filterTableViewCell(filterTableViewCell: FilterTableViewCell, switchValueDidChange value: Bool) {
+        if value {
+            filters.append(filterTableViewCell.filter["code"]!)
+        } else if let index = find(filters, filterTableViewCell.filter["code"]!) {
+            filters.removeAtIndex(index)
+        }
+        println("\(filterTableViewCell.filterLabel.text): \(value)")
     }
     
     override func didReceiveMemoryWarning() {

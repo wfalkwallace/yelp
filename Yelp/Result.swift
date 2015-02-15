@@ -41,7 +41,8 @@ class Result {
         var results: [Result] = []
         for result in response {
             var resultName = result["name"] as String
-            var resultImageURL = result["image_url"]! as String
+            var resultRawImageURL = result["image_url"] as String?
+            var resultImageURL = resultRawImageURL == nil ? "" : resultRawImageURL!
             var resultDistance = result["distance"] as Float
             var resultRatingURL = result["rating_img_url"]! as String
             var resultReviewerCount = result["review_count"]! as Int

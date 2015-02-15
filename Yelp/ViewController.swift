@@ -101,8 +101,10 @@ class ViewController: UIViewController,
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue?, sender: AnyObject?) {
-        filterController = segue!.destinationViewController.topViewController as? FiltersViewController
-        filterController!.delegate = self;
+        if let filterController = segue!.destinationViewController.topViewController as? FiltersViewController {
+            filterController.delegate = self
+            filterController.filters = filters
+        }
     }
     
     override func didReceiveMemoryWarning() {
