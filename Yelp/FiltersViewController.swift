@@ -22,7 +22,16 @@ class FiltersViewController: UIViewController,
     
     weak var delegate: FiltersViewControllerDelegate?
     var filters: [String] = []
-    let 
+    let sorts: [String: Int] = [
+        "Best Match": 0,
+        "Distance": 1,
+        "Rating": 2]
+    let radii: [String:Float] = [
+        "2 blocks": 200.0,
+        "6 blocks": 600.0,
+        "1 mile": 1609.34,
+        "5 miles": 8046.72]
+    let deals: [Bool] = [true, false]
     let categories: [[String:String]] = [
         ["name" : "Afghan", "code": "afghani"],
         ["name" : "African", "code": "african"],
