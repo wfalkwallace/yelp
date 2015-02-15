@@ -26,24 +26,28 @@ class YelpClient: BDBOAuth1RequestOperationManager {
         self.requestSerializer.saveAccessToken(token)
     }
     
-    func search(searchParameters: [String:String?],
+    func search(term: String?,
+                categories: [String],
+                deals: Bool,
+                sort: Int,
+                radius: Float?,
                 success: (AFHTTPRequestOperation!, AnyObject!) -> Void,
                 failure: (AFHTTPRequestOperation!, NSError!) -> Void) -> AFHTTPRequestOperation! {
             var parameters = Dictionary<String, String>()
-            if let term = searchParameters["term"] {
+            if let term = term {
                 parameters["term"] = term
             }
-            if let categories = searchParameters["categories"] {
-                parameters["category_filter"] = categories
+            if categories.count > 0 {
+                parameters["category_filter"] = ",".join(categories)
             }
-            if let radius = searchParameters["radius"] {
-                parameters["radius_filter"] = radius
+            if let radius = radius {
+                parameters["radius_filter"] = "\(radius)"
             }
-            if let location = searchParameters["location"] {
-                parameters["ll"] = location
-            } else {
-                parameters["ll"] = "37.791412, -122.395606"
+            if deals {
+                parameters["deals_filter"] = "\(deals)"
             }
+            parameters["sort"] = "\(sort)"
+            parameters["ll"] = "37.791412, -122.395606"
             return self.GET("search", parameters: parameters, success: success, failure: failure)
     }
 }

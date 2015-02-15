@@ -17,10 +17,14 @@ class ViewController: UIViewController,
     var client: YelpClient!
     var results: [Result] = []
     var filteredResults: [Result] = []
-    var searchBar: UISearchBar = UISearchBar()
-    var filters: [String] = []
-    var filterController: FiltersViewController?
+
+    var categoryFilters: [String] = []
+    var dealFilter: Bool = false
+    var radiusFilter: Float?
+    var sortFilter = 0
     
+    var searchBar: UISearchBar = UISearchBar()
+    var filterController: FiltersViewController?
     @IBOutlet weak var resultsTableView: UITableView!
     
     required init(coder aDecoder: NSCoder) {
@@ -48,11 +52,11 @@ class ViewController: UIViewController,
         resultsTableView.estimatedRowHeight = 150
         resultsTableView.rowHeight = UITableViewAutomaticDimension
         
-        loadResults(nil, categories: ",".join(filters))
+        loadResults(nil)
     }
     
-    func loadResults(term: String?, categories: String?) {
-        client.search(["term": term, "categories": categories], success: { (operation: AFHTTPRequestOperation!, response: AnyObject!) -> Void in
+    func loadResults(term: String?) {
+        client.search(term, categories: categoryFilters, deals: dealFilter, sort: sortFilter, radius: radiusFilter, success: { (operation: AFHTTPRequestOperation!, response: AnyObject!) -> Void in
             self.results = Result.resultArrayFromDictionary((response as NSDictionary)["businesses"] as NSArray)
             self.filteredResults = self.results
             self.resultsTableView.reloadData()
@@ -86,24 +90,30 @@ class ViewController: UIViewController,
     }
     
     func searchBarSearchButtonClicked(searchBar: UISearchBar) {
-        loadResults(searchBar.text, categories: ",".join(filters))
+        loadResults(searchBar.text)
     }
     
     func searchBarCancelButtonClicked(searchBar: UISearchBar) {
         searchBar.text = ""
         searchBar.endEditing(true)
-        loadResults(nil, categories: ",".join(filters))
+        loadResults(nil)
     }
     
-    func filtersViewController(filtersViewController: FiltersViewController, filterValues: [String]) {
-        filters = filterValues
-        loadResults(searchBar.text, categories: ",".join(filters))
+    func filtersViewController(filtersViewController: FiltersViewController, categories: [String], deals: Bool, radius: Float?, sort: Int) {
+        categoryFilters = categories
+        dealFilter = deals
+        sortFilter = sort
+        radiusFilter = radius
+        loadResults(searchBar.text)
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue?, sender: AnyObject?) {
         if let filterController = segue!.destinationViewController.topViewController as? FiltersViewController {
             filterController.delegate = self
-            filterController.filters = filters
+            filterController.categoryFilters = categoryFilters
+            filterController.dealFilter = dealFilter
+            filterController.radiusFilter = radiusFilter
+            filterController.sortFilter = sortFilter
         }
     }
     

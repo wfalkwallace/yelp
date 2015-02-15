@@ -278,7 +278,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="com.falk-wallace.FilterCell" rowHeight="50" id="N4d-DP-WYb" customClass="FilterTableViewCell" customModule="Yelp" customModuleProvider="target">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="com.falk-wallace.FilterCell" rowHeight="40" id="N4d-DP-WYb" customClass="FilterTableViewCell" customModule="Yelp" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="N4d-DP-WYb" id="clF-qz-7pE">
@@ -333,7 +333,7 @@
                                             <outlet property="filterSwitch" destination="1UZ-sC-je7" id="Bgr-p0-alF"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="com.falk-wallace.TextFilterCell" rowHeight="50" id="6FQ-Ck-36g" customClass="TextFilterTableViewCell" customModule="Yelp" customModuleProvider="target">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="com.falk-wallace.TextFilterCell" rowHeight="40" id="6FQ-Ck-36g" customClass="TextFilterTableViewCell" customModule="Yelp" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="6FQ-Ck-36g" id="IBZ-rc-bhX">
@@ -345,49 +345,78 @@
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="FilterValue" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xse-dj-bVd">
-                                                    <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstAttribute="centerY" secondItem="xse-dj-bVd" secondAttribute="centerY" id="2Ww-95-nJq"/>
                                                 <constraint firstItem="hX4-qK-4Nj" firstAttribute="leading" secondItem="IBZ-rc-bhX" secondAttribute="leading" constant="8" id="A4t-Ey-9Va"/>
-                                                <constraint firstAttribute="trailing" secondItem="xse-dj-bVd" secondAttribute="trailing" constant="8" id="XdD-aJ-TYn"/>
                                                 <constraint firstAttribute="centerY" secondItem="hX4-qK-4Nj" secondAttribute="centerY" id="fqk-YR-VSZ"/>
                                             </constraints>
                                             <variation key="default">
                                                 <mask key="subviews">
                                                     <exclude reference="hX4-qK-4Nj"/>
-                                                    <exclude reference="xse-dj-bVd"/>
                                                 </mask>
                                                 <mask key="constraints">
                                                     <exclude reference="A4t-Ey-9Va"/>
                                                     <exclude reference="fqk-YR-VSZ"/>
-                                                    <exclude reference="2Ww-95-nJq"/>
-                                                    <exclude reference="XdD-aJ-TYn"/>
                                                 </mask>
                                             </variation>
                                             <variation key="widthClass=compact">
                                                 <mask key="subviews">
                                                     <include reference="hX4-qK-4Nj"/>
-                                                    <include reference="xse-dj-bVd"/>
                                                 </mask>
                                                 <mask key="constraints">
                                                     <include reference="A4t-Ey-9Va"/>
                                                     <include reference="fqk-YR-VSZ"/>
-                                                    <include reference="2Ww-95-nJq"/>
-                                                    <include reference="XdD-aJ-TYn"/>
                                                 </mask>
                                             </variation>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="filterLabel" destination="hX4-qK-4Nj" id="xjP-kp-cv9"/>
-                                            <outlet property="filterName" destination="IBZ-rc-bhX" id="j1b-g1-hNU"/>
-                                            <outlet property="filterSwitch" destination="IBZ-rc-bhX" id="WiG-WM-5f6"/>
-                                            <outlet property="filterValue" destination="IBZ-rc-bhX" id="C5p-Os-KoJ"/>
+                                            <outlet property="filterName" destination="hX4-qK-4Nj" id="V3l-sa-13w"/>
+                                        </connections>
+                                    </tableViewCell>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="com.falk-wallace.ExpanderCell" rowHeight="40" id="TKE-lq-5Mt" customClass="ExpanderTableViewCell" customModule="Yelp" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="TKE-lq-5Mt" id="f4I-yZ-K3h">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="See More/Selected Value" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g3h-WS-59G">
+                                                    <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                    <variation key="widthClass=compact" misplaced="YES">
+                                                        <rect key="frame" x="8" y="10" width="317" height="20.5"/>
+                                                    </variation>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="centerY" secondItem="g3h-WS-59G" secondAttribute="centerY" id="Yr3-DU-YvO"/>
+                                                <constraint firstAttribute="trailing" secondItem="g3h-WS-59G" secondAttribute="trailing" constant="8" id="b2h-DV-Pwg"/>
+                                                <constraint firstItem="g3h-WS-59G" firstAttribute="leading" secondItem="f4I-yZ-K3h" secondAttribute="leading" constant="8" id="q9d-Vi-z5F"/>
+                                            </constraints>
+                                            <variation key="default">
+                                                <mask key="subviews">
+                                                    <exclude reference="g3h-WS-59G"/>
+                                                </mask>
+                                                <mask key="constraints">
+                                                    <exclude reference="Yr3-DU-YvO"/>
+                                                    <exclude reference="b2h-DV-Pwg"/>
+                                                    <exclude reference="q9d-Vi-z5F"/>
+                                                </mask>
+                                            </variation>
+                                            <variation key="widthClass=compact">
+                                                <mask key="subviews">
+                                                    <include reference="g3h-WS-59G"/>
+                                                </mask>
+                                                <mask key="constraints">
+                                                    <include reference="Yr3-DU-YvO"/>
+                                                    <include reference="b2h-DV-Pwg"/>
+                                                    <include reference="q9d-Vi-z5F"/>
+                                                </mask>
+                                            </variation>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="expanderLabel" destination="g3h-WS-59G" id="Csl-7A-5Zn"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>

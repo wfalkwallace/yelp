@@ -21,6 +21,7 @@
 		E62100AD1A8FD23A00F41710 /* FiltersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E62100AC1A8FD23A00F41710 /* FiltersViewController.swift */; };
 		E62100AF1A8FD5C800F41710 /* FilterTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E62100AE1A8FD5C800F41710 /* FilterTableViewCell.swift */; };
 		E62100B21A91341400F41710 /* TextFilterTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E62100B11A91341400F41710 /* TextFilterTableViewCell.swift */; };
+		E62100B41A91511B00F41710 /* ExpanderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E62100B31A91511B00F41710 /* ExpanderTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +56,7 @@
 		E62100AC1A8FD23A00F41710 /* FiltersViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FiltersViewController.swift; sourceTree = "<group>"; };
 		E62100AE1A8FD5C800F41710 /* FilterTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterTableViewCell.swift; sourceTree = "<group>"; };
 		E62100B11A91341400F41710 /* TextFilterTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextFilterTableViewCell.swift; sourceTree = "<group>"; };
+		E62100B31A91511B00F41710 /* ExpanderTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExpanderTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -149,6 +151,7 @@
 		222D8A7B19CCFAB600D2DB53 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				E62100B31A91511B00F41710 /* ExpanderTableViewCell.swift */,
 				E62100B11A91341400F41710 /* TextFilterTableViewCell.swift */,
 				E62100AE1A8FD5C800F41710 /* FilterTableViewCell.swift */,
 				E61005141A8D87D100AFAA30 /* ResultTableViewCell.swift */,
@@ -321,6 +324,7 @@
 			files = (
 				222D8A5D19CCF9F900D2DB53 /* ViewController.swift in Sources */,
 				222D8A7D19CCFAE000D2DB53 /* YelpClient.swift in Sources */,
+				E62100B41A91511B00F41710 /* ExpanderTableViewCell.swift in Sources */,
 				E61005151A8D87D100AFAA30 /* ResultTableViewCell.swift in Sources */,
 				E62100AB1A8EFC8200F41710 /* Result.swift in Sources */,
 				E62100AD1A8FD23A00F41710 /* FiltersViewController.swift in Sources */,

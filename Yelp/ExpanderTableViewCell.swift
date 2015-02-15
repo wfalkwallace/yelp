@@ -1,5 +1,5 @@
 //
-//  TextFilterTableViewCell.swift
+//  ExpanderTableViewCell.swift
 //  Yelp
 //
 //  Created by William Falk-Wallace on 2/15/15.
@@ -8,9 +8,9 @@
 
 import UIKit
 
-class TextFilterTableViewCell: UITableViewCell {
+class ExpanderTableViewCell: UITableViewCell {
 
-    @IBOutlet weak var filterName: UILabel!
+    @IBOutlet weak var expanderLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
