@@ -31,7 +31,7 @@ Time spent: [`15 Hours`](https://wakatime.com/@wfalkwallace/projects/okgnlqreif)
 
 ### Walkthrough
 
-![Video Walkthrough](...)
+![Video Walkthrough](howl.gif)
 
 
 
