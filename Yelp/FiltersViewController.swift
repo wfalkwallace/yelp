@@ -12,7 +12,7 @@ protocol FiltersViewControllerDelegate: class {
     func filtersViewController(filtersViewController: FiltersViewController,
                                categories: [String],
                                deals: Bool,
-                               radius: Float?,
+                               radius: (String, Float?),
                                sort: Int)
 }
 
@@ -26,7 +26,7 @@ class FiltersViewController: UIViewController,
     
     var categoryFilters: [String] = []
     var dealFilter: Bool = false
-    var radiusFilter: Float?
+    var radiusFilter: (String,Float?) = ("Best Match", nil)
     var sortFilter = 0
     var expand:String = "" {
         didSet {
@@ -48,6 +48,7 @@ class FiltersViewController: UIViewController,
                 self.sectionRows["Sort"] = 1
                 self.sectionRows["Distance"] = 1
             }
+            self.filtersTableView.reloadData()
         }
     }
     
@@ -278,13 +279,25 @@ class FiltersViewController: UIViewController,
         
         switch sectionName {
         case "Sort":
-            let cell = filtersTableView.dequeueReusableCellWithIdentifier("com.falk-wallace.TextFilterCell") as TextFilterTableViewCell
-            cell.filterName.text = sorts[row]
-            return cell
+            if expand != "Sort" {
+                let cell = filtersTableView.dequeueReusableCellWithIdentifier("com.falk-wallace.TextFilterCell") as TextFilterTableViewCell
+                cell.filterName.text = sorts[sortFilter]
+                return cell
+            } else {
+                let cell = filtersTableView.dequeueReusableCellWithIdentifier("com.falk-wallace.TextFilterCell") as TextFilterTableViewCell
+                cell.filterName.text = sorts[row]
+                return cell
+            }
         case "Distance":
-            let cell = filtersTableView.dequeueReusableCellWithIdentifier("com.falk-wallace.TextFilterCell") as TextFilterTableViewCell
-            cell.filterName.text = radii[row]
-            return cell
+            if expand != "Distance" {
+                let cell = filtersTableView.dequeueReusableCellWithIdentifier("com.falk-wallace.TextFilterCell") as TextFilterTableViewCell
+                cell.filterName.text = radiusFilter.0
+                return cell
+            } else {
+                let cell = filtersTableView.dequeueReusableCellWithIdentifier("com.falk-wallace.TextFilterCell") as TextFilterTableViewCell
+                cell.filterName.text = radii[row]
+                return cell
+            }
         case "Popular":
             let cell = filtersTableView.dequeueReusableCellWithIdentifier("com.falk-wallace.FilterCell") as FilterTableViewCell
             cell.filter = ["name": "Deals", "code": "deals"]
@@ -307,6 +320,31 @@ class FiltersViewController: UIViewController,
         // Should never see either of these cases - what's the better way to do this?
         default:
             return UITableViewCell()
+        }
+    }
+    
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        switch sections[indexPath.section ] {
+        case "Categories":
+            if expand != "Categories" && indexPath.row == sectionRows.count - 1{
+                expand = "Categories"
+            }
+        case "Sort":
+            if expand != "Sort" {
+                expand = "Sort"
+            } else {
+                sortFilter = sortValues[sorts[indexPath.row]]!
+                expand = ""
+            }
+        case "Distance":
+            if expand != "Distance" {
+                expand = "Distance"
+            } else {
+                radiusFilter = (radii[indexPath.row], radiusValues[radii[indexPath.row]]!)
+                expand = ""
+            }
+        default:
+            expand = ""
         }
     }
     

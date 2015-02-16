@@ -20,7 +20,7 @@ class ViewController: UIViewController,
 
     var categoryFilters: [String] = []
     var dealFilter: Bool = false
-    var radiusFilter: Float?
+    var radiusFilter: (String, Float?) = ("Best Match", nil)
     var sortFilter = 0
     
     var searchBar: UISearchBar = UISearchBar()
@@ -56,7 +56,7 @@ class ViewController: UIViewController,
     }
     
     func loadResults(term: String?) {
-        client.search(term, categories: categoryFilters, deals: dealFilter, sort: sortFilter, radius: radiusFilter, success: { (operation: AFHTTPRequestOperation!, response: AnyObject!) -> Void in
+        client.search(term, categories: categoryFilters, deals: dealFilter, sort: sortFilter, radius: radiusFilter.1, success: { (operation: AFHTTPRequestOperation!, response: AnyObject!) -> Void in
             self.results = Result.resultArrayFromDictionary((response as NSDictionary)["businesses"] as NSArray)
             self.filteredResults = self.results
             self.resultsTableView.reloadData()
@@ -99,7 +99,7 @@ class ViewController: UIViewController,
         loadResults(nil)
     }
     
-    func filtersViewController(filtersViewController: FiltersViewController, categories: [String], deals: Bool, radius: Float?, sort: Int) {
+    func filtersViewController(filtersViewController: FiltersViewController, categories: [String], deals: Bool, radius: (String, Float?), sort: Int) {
         categoryFilters = categories
         dealFilter = deals
         sortFilter = sort
