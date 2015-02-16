@@ -30,12 +30,29 @@ class FiltersViewController: UIViewController,
     var sortFilter = 0
     var expand:String = "" {
         didSet {
-            
+            switch expand {
+            case "Categories":
+                sectionRows["Categories"] = categories.count
+                sectionRows["Sort"] = 1
+                sectionRows["Distance"] = 1
+            case "Sort":
+                self.sectionRows["Categories"] = 4
+                self.sectionRows["Sort"] = sorts.count
+                self.sectionRows["Distance"] = 1
+            case "Distance":
+                self.sectionRows["Categories"] = 4
+                self.sectionRows["Sort"] = 1
+                self.sectionRows["Distance"] = radii.count
+            default:
+                self.sectionRows["Categories"] = 4
+                self.sectionRows["Sort"] = 1
+                self.sectionRows["Distance"] = 1
+            }
         }
     }
     
-    let sections = ["Sort", "Radius", "Popular", "Categories"]
-    let sectionRows = ["Sort": 1, "Radius": 1, "Popular": 1, "Categories": 4]
+    let sections = ["Sort", "Distance", "Popular", "Categories"]
+    var sectionRows = ["Sort": 1, "Distance": 1, "Popular": 1, "Categories": 4]
     let sorts: [String] = ["Best Match",
                            "Distance",
                            "Rating"]
@@ -264,7 +281,7 @@ class FiltersViewController: UIViewController,
             let cell = filtersTableView.dequeueReusableCellWithIdentifier("com.falk-wallace.TextFilterCell") as TextFilterTableViewCell
             cell.filterName.text = sorts[row]
             return cell
-        case "Radius":
+        case "Distance":
             let cell = filtersTableView.dequeueReusableCellWithIdentifier("com.falk-wallace.TextFilterCell") as TextFilterTableViewCell
             cell.filterName.text = radii[row]
             return cell

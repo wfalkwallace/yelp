@@ -2,7 +2,7 @@
 
 This is a Yelp search app using the [Yelp API](http://developer.rottentomatoes.com/docs/read/JSON).
 
-Time spent: [`<Number of hours spent>`](https://wakatime.com/@wfalkwallace/projects/okgnlqreif)
+Time spent: [`15 Hours`](https://wakatime.com/@wfalkwallace/projects/okgnlqreif)
 
 ### Features
 
@@ -23,7 +23,7 @@ Time spent: [`<Number of hours spent>`](https://wakatime.com/@wfalkwallace/proje
 - [x] Search results page
    - [ ] Infinite scroll for restaurant results
    - [ ] Implement map view of restaurant results
-- [ ] Filter page
+- [x] Filter page
    - [ ] Radius filter should expand as in the real Yelp app
    - [x] Categories should show a subset of the full list with a "See All" row to expand. Category list is here: http://www.yelp.com/developers/documentation/category_list (Links to an external site.)
    - [ ] You can use the default UISwitch for on/off states. Optional: implement a custom switch
